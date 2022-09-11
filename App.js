@@ -4,13 +4,22 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.instructions}>
-        To create a reminder, press the button below!
-      </Text>
-      <TouchableOpacity
-        onPress={() => alert('Reminder created')} style={styles.button}>
-          <Text style={styles.buttonText}>Create reminder</Text>
-      </TouchableOpacity>
+      <View style={styles.remindersWrapper}>
+        <Text style={styles.sectionTitle}>
+          Reminders
+        </Text>
+
+        <TouchableOpacity
+          onPress={() => alert('Reminder created')} style={styles.button}>
+            <Text style={styles.buttonText}>Create reminder</Text>
+        </TouchableOpacity>
+
+        <View style={styles.reminders}>
+          {/* This is where reminders list will go. */}
+          {/* Users will be able to see when they will be reminded too. */}
+        </View>
+
+      </View>
     </View>
   );
 }
@@ -19,17 +28,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  instructions: {
-    color: '#888',
-    fontSize: 18,
-    marginHorizontal: 15,
-    marginBottom: 10,
+  remindersWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   button: {
-    backgroundColor: "green",
+    backgroundColor: "teal",
     padding: 20,
     borderRadius: 5,
   },
