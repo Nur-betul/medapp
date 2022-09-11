@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Reminder from './components/Reminder';
 
 export default function App() {
   return (
@@ -9,13 +10,15 @@ export default function App() {
           Reminders
         </Text>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => alert('Reminder created')} style={styles.button}>
             <Text style={styles.buttonText}>Create reminder</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <View style={styles.reminders}>
           {/* This is where reminders list will go. */}
+          <Reminder text={'Reminder 1'}/>
+          <Reminder text={'Reminder 2'}/>
           {/* Users will be able to see when they will be reminded too. */}
         </View>
 
@@ -46,4 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
   },
+  reminders: {
+    marginTop: 30,
+  }
 });
