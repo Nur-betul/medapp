@@ -1,8 +1,17 @@
-import React from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import Reminder from './components/Reminder';
 
 export default function App() {
+  const [reminder, setReminder] = useState();
+  const [reminderItems, setReminderItems] = useState([]);
+
+  const handleAddReminder = () => {
+    Keyboard.dismiss();
+    setReminderItems([...reminderItems, reminder])
+    setReminder(null);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.remindersWrapper}>
@@ -12,8 +21,11 @@ export default function App() {
 
         <View style={styles.reminders}>
           {/* This is where reminders list will go. */}
-          <Reminder text={'Reminder 1'}/>
-          <Reminder text={'Reminder 2'}/>
+          {
+            reminderItems.map((item, index) => {
+              return <Reminder key={index} text={item}/>
+            })
+          }
           {/* Users will be able to see when they will be reminded too. */}
         </View>
 
@@ -23,9 +35,9 @@ export default function App() {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.writeReminderWrapper}>
-          <TextInput style={styles.input} placeholder={'Create a reminder'}/>
+          <TextInput style={styles.input} placeholder={'Create a reminder'} value={reminder} onChangeText={text => setReminder(text)}/>
 
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => handleAddReminder()}>
             <View style={styles.addWrapper}>
               <Text style={styles.addText}>+</Text>
             </View>
