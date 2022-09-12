@@ -12,6 +12,14 @@ export default function App() {
     setReminder(null);
   }
 
+  // Create separate completeReminder
+  // Delete and complete are not synonymous
+  const deleteReminder = (index) => {
+    let itemsCopy = [...reminderItems];
+    itemsCopy.splice(index, 1);
+    setReminderItems(itemsCopy);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.remindersWrapper}>
@@ -23,7 +31,11 @@ export default function App() {
           {/* This is where reminders list will go. */}
           {
             reminderItems.map((item, index) => {
-              return <Reminder key={index} text={item}/>
+              return (
+                <TouchableOpacity key={index} onPress={() => deleteReminder(index)}>
+                  <Reminder text={item}/>
+                </TouchableOpacity>
+              )
             })
           }
           {/* Users will be able to see when they will be reminded too. */}
