@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Reminder from './components/Reminder';
 
 export default function App() {
@@ -10,11 +10,6 @@ export default function App() {
           Reminders
         </Text>
 
-        {/* <TouchableOpacity
-          onPress={() => alert('Reminder created')} style={styles.button}>
-            <Text style={styles.buttonText}>Create reminder</Text>
-        </TouchableOpacity> */}
-
         <View style={styles.reminders}>
           {/* This is where reminders list will go. */}
           <Reminder text={'Reminder 1'}/>
@@ -23,6 +18,20 @@ export default function App() {
         </View>
 
       </View>
+
+      {/* Create a reminder */}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.writeReminderWrapper}>
+          <TextInput style={styles.input} placeholder={'Create a reminder'}/>
+
+          <TouchableOpacity >
+            <View style={styles.addWrapper}>
+              <Text style={styles.addText}>+</Text>
+            </View>
+          </TouchableOpacity>
+      </KeyboardAvoidingView>
+
     </View>
   );
 }
@@ -51,5 +60,33 @@ const styles = StyleSheet.create({
   },
   reminders: {
     marginTop: 30,
-  }
+  },
+  writeReminderWrapper: {
+    position: 'absolute',
+    bottom: 60,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  input: {
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    backgroundColor: '#DCDCDC',
+    borderRadius: 60,
+    borderColor: '#C0C0C0',
+    borderWidth: 1,
+    width: 250,
+  },
+  addWrapper: {
+    width: 60,
+    height: 60,
+    backgroundColor: '#DCDCDC',
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#C0C0C0',
+    borderWidth: 1,
+  },
+  addText: {},
 });
