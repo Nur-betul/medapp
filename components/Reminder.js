@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { CheckBox, Icon } from 'react-native-elements';
+
 const Reminder = (props) => {
+    const [check, setCheck] = useState(false);
+
+    const completionState = (check ? '- Complete' : '')
+
     return (
         <View style={styles.reminder}>
             <View style={styles.reminderLeft}>
-                <View style={styles.square}></View>
-                <Text style={styles.reminderText}>{props.text}</Text>
+                {/* <View style={styles.square}></View> */}
+                <CheckBox checked={check} onPress={() => setCheck(!check)}/>
+                    <Text style={styles.reminderText}>{props.text} {completionState}</Text>
             </View>
-            <View style={styles.circular}></View>
+            {/* <View style={styles.circular}></View> */}
         </View>
     )
 }
