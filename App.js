@@ -1,34 +1,98 @@
 import React, {useState} from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Modal } from 'react-native';
 import Reminder from './components/Reminder';
+import { Button } from 'react-native-elements';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function App() {
+  const [modalOpen, setModalOpen] = useState(false);
   const [reminder, setReminder] = useState();
   const [reminderItems, setReminderItems] = useState([]);
 
   const handleAddReminder = () => {
     Keyboard.dismiss();
-    setReminderItems([...reminderItems, reminder])
+    setReminderItems([...reminderItems, reminderFormatted]);
     setReminder(null);
   }
-
-  // Create separate completeReminder
-  // Delete and complete are not synonymous
+  
   const deleteReminder = (index) => {
     let itemsCopy = [...reminderItems];
     itemsCopy.splice(index, 1);
     setReminderItems(itemsCopy);
   }
+  
+  const [date, setDate] = useState('');
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  
+  const reminderFormatted = reminder + ' ' + date;
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setDate(date);
+    hideDatePicker();
+  };
 
   return (
     <View style={styles.container}>
+
+          <Modal 
+            visible={modalOpen} 
+            animationType='slide'
+            >
+            <View style={styles.modalStyle}>
+              <View>
+                <Text style={styles.sectionTitle}>
+                  Form - Create Reminder
+                </Text>
+                <View>
+                  <Ionicons name="close" size={32} onPress={() => setModalOpen(false)} />
+                </View>
+              </View>
+              <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} >
+                <Text>Write Reminder:</Text>
+                  <TextInput 
+                    style={styles.input} 
+                    placeholder={'Take meds, walk dog, brush teeth, etc.'} 
+                    placeholderTextColor='grey'
+                    value={reminder} 
+                    onChangeText={text => setReminder(text)}
+                  />
+                  <View>
+                   <Text>Set Date and Time:</Text>
+                     <MaterialIcons name="date-range" size={32} onPress={showDatePicker} />
+                  </View>
+                  <Text>
+                    Reminder Preview: {reminder + ' - ' + date}
+                  </Text>
+                  <Button title='Submit' onPress={() => handleAddReminder() & setModalOpen(false)} />
+                  <DateTimePickerModal
+                    isVisible={isDatePickerVisible}
+                    mode='datetime'
+                    display='inline'
+                    onConfirm={handleConfirm}
+                    onCancel={hideDatePicker}
+                  />
+              </KeyboardAvoidingView>
+            </View>
+          </Modal>
+
       <View style={styles.remindersWrapper}>
         <Text style={styles.sectionTitle}>
-          Reminders
+          Screen - Reminders List
         </Text>
-
+        <View>
+          <Ionicons name="add" size={32} onPress={() => setModalOpen(true)} />
+        </View>
         <View style={styles.reminders}>
-          {/* This is where reminders list will go. */}
           {
             reminderItems.map((item, index) => {
               return (
@@ -38,23 +102,8 @@ export default function App() {
               )
             })
           }
-          {/* Users will be able to see when they will be reminded too. */}
         </View>
-
       </View>
-
-      {/* Create a reminder */}
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.writeReminderWrapper}>
-          <TextInput style={styles.input} placeholder={'Create a reminder'} value={reminder} onChangeText={text => setReminder(text)}/>
-
-          <TouchableOpacity onPress={() => handleAddReminder()}>
-            <View style={styles.addWrapper}>
-              <Text style={styles.addText}>+</Text>
-            </View>
-          </TouchableOpacity>
-      </KeyboardAvoidingView>
 
     </View>
   );
@@ -65,52 +114,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  remindersWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
+    paddingTop: 25,
   },
-  button: {
-    backgroundColor: "teal",
-    padding: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
+  remindersWrapper: {
+    paddingHorizontal: 20,
   },
   reminders: {
-    marginTop: 30,
-  },
-  writeReminderWrapper: {
-    position: 'absolute',
-    bottom: 60,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
+    marginTop: 10,
   },
   input: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: '#DCDCDC',
-    borderRadius: 60,
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
-    width: 250,
+    borderRadius: 10,
   },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    backgroundColor: '#DCDCDC',
-    borderRadius: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
-  },
-  addText: {},
+  modalStyle: {
+    paddingHorizontal: 20,
+  }
 });
