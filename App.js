@@ -1,15 +1,55 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Modal } from 'react-native';
 import Reminder from './components/Reminder';
 import { Button } from 'react-native-elements';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import * as Notifications from 'expo-notifications';
 
 export default function App() {
+  {/* Local Notifcation Test */}
+  // ios Requires Permission
+  // Deprecated: expo-permissions
+  // Currently researching Expo replacement
+  // and CalendarNotififcationTrigger with default DateTimePicker object
+
+  // async function requestPermissionsAsync() {
+  //   return await Notifications.requestPermissionsAsync({
+  //     ios: {
+  //       allowAlert: true,
+  //       allowBadge: true,
+  //       allowSound: true,
+  //       allowAnnouncements: true,
+  //     },
+  //   });
+  // }
+
+  const handleNotification = () => {
+
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Reminder 👋',
+        body: reminder + ' - ' + date
+      },
+      trigger: {
+        seconds: 5,
+      },
+      // CalendarNotifcationTrigger: {
+      //   day: number,
+      //   month: number,
+      //   weekday: number,
+      //   hour: number,
+      //   minute: number,
+      // },
+    })
+  };
+  {/* Local Notifcation Test */}
+
   const [modalOpen, setModalOpen] = useState(false);
   const [reminder, setReminder] = useState();
   const [reminderItems, setReminderItems] = useState([]);
+
 
   const handleAddReminder = () => {
     Keyboard.dismiss();
@@ -73,7 +113,7 @@ export default function App() {
                   <Text>
                     Reminder Preview: {reminder + ' - ' + date}
                   </Text>
-                  <Button title='Submit' onPress={() => handleAddReminder() & setModalOpen(false)} />
+                  <Button title='Submit' onPress={() => handleAddReminder() & handleNotification() & setModalOpen(false)} />
                   <DateTimePickerModal
                     isVisible={isDatePickerVisible}
                     mode='datetime'
