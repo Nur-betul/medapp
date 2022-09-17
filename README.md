@@ -70,7 +70,7 @@ This application was built as a code challenge, and is my first foray into React
 - Reminders spill off the lower half of the screen and are not scrollable currently.
 
 #### Local Notifications
-- Local non-app foreground notifications appear on utilized iPhone for development, but not on others iPhones. I have pinpointed it to be due to Apple permissions. Expo-permissions has been recently deprecated and am learning to implement its replacement.
+- Local non-app foreground notifications appear on utilized iPhone for development, but not on others iPhones. I have pinpointed it to be due to Apple permissions. Expo-permissions has been recently deprecated and I am learning to implement its replacement.
 
 ## Tour guide
 
