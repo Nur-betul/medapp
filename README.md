@@ -23,7 +23,7 @@ A React Native CRUD application with a simple reminder form and screen. Instruct
 - A user can see when they will be reminded.
 - A user can set a reminder to complete in that list.
 - A user can see a list of all the reminders they have created.
-- A user will receive a local notification five seconds after reminder creation outside of App foreground as proof of concept reminder.
+- A user will receive a local notification five seconds after reminder creation outside of App foreground as a proof of concept reminder notification.
 
 ## Summary
 
@@ -58,7 +58,7 @@ This application was built as a code challenge, and is my first foray into React
 ## Bugs
 
 #### Android OS
-- Attempting to schedule the date/time of reminder force closes application. This behavior was recently reported in the [react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker) repository, to which [I also reported](https://github.com/mmazzarolo/react-native-modal-datetime-picker/issues/662) the same behavior in this project since it utilizes it.
+- Attempting to schedule the date/time of reminders force closes the application. This behavior was recently reported in the [react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker) repository, to which [I also reported](https://github.com/mmazzarolo/react-native-modal-datetime-picker/issues/662) the same behavior in this project since it utilizes it.
 - UI/UX on some phones overtakes status bar.
 - UI/UX on app overtakes some phone status bars.
 
@@ -70,14 +70,14 @@ This application was built as a code challenge, and is my first foray into React
 - Reminders spill off the lower half of the screen and are not scrollable currently.
 
 #### Local Notifications
-- Local non-app foreground notifications appear on utilized iPhone for development, but not on others iPhones. I have pinpointed it to be due to Apple permissions. Expo-permissions has been recently deprecated and I am learning to implement its replacement.
+- Local non-app foreground notifications appear on utilized iPhone for development, but not on other iPhones. I have pinpointed it to be due to Apple permissions. Expo-permissions has been recently deprecated and I am learning to implement its replacement.
 
-## Tour guide
+## How to View and Interact with this project
 
 To view and interact with this project follow the steps below:
 
 1. Navigate to this link that takes you to an Expo Snack of this project: https://snack.expo.dev/@justicepelteir/mvpreactnativereminderapp
-2. You can either elect to interact with the app by choosing option one "Run on your device" or two "Show embeded code" option. 
+2. You can either elect to interact with the app by choosing option one "Run on your device" or two "Show embeded code" option that can be found in the navigation bar.
 3. Option one will require you to download Expo Go on your cellphone.
 4. Option two only requires a computer and for you to select how you would like to view/interact with it.
 5. For more detailed instructions on navigating Expo Snacks click the following link for the [official snack documentation](https://docs.expo.dev/workflow/snack/).
