@@ -58,7 +58,7 @@ This application was built as a code challenge, and is my first foray into React
 ## Bugs
 
 #### Android OS
-- Attempting to schedule the date/time of reminder force closes application. This behavior was recently reported in the [react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker) repository, to which I also reported the same behavior in this project since it utilizes it.
+- Attempting to schedule the date/time of reminder force closes application. This behavior was recently reported in the [react-native-modal-datetime-picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker) repository, to which [I also reported](https://github.com/mmazzarolo/react-native-modal-datetime-picker/issues/662) the same behavior in this project since it utilizes it.
 - UI/UX on some phones overtakes status bar.
 - UI/UX on app overtakes some phone status bars.
 
@@ -74,7 +74,7 @@ This application was built as a code challenge, and is my first foray into React
 
 ## Tour guide
 
-COMING SOON
+
 
 ## License
 
