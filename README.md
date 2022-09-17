@@ -72,6 +72,18 @@ This application was built as a code challenge, and is my first foray into React
 #### Local Notifications
 - Local non-app foreground notifications appear on utilized iPhone for development, but not on other iPhones. I have pinpointed it to be due to Apple permissions. Expo-permissions has been recently deprecated and I am learning to implement its replacement.
 
+## Room for Improvement
+
+- Outsource much of the functionality within App.js as separate imported components.
+- Learn expo-permissions replacement and implement it since expo-permissions has been deprecated for ios notification permissions. This also should help resolve the issue of local notifications not displaying in the app foreground.
+- Implement ability to scroll on reminder list screen when reminders reach the point of spilling out of the screen itself.
+- Eliminate undefined, null, and dash mark on reminder preview in the create reminder form when no input has been entered.
+- Transform current 24-hour time format to AM/PM time format, or create an option to switch between them.
+- Make reminders actually set local notifications to the inputted scheduled reminder date/time instead of five seconds from hitting submit button.
+- Add ability to edit already created reminders inputed text and scheduled date/time.
+- Add ability to schedule reminders as repeating events.
+- Implement TDD, since development speed was prioritized in this project's initial iteration.
+
 ## How to View and Interact with this project
 
 To view and interact with this project follow the steps below:
