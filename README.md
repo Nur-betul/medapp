@@ -77,7 +77,7 @@ This application was built as a code challenge, and is my first foray into React
 To view and interact with this project follow the steps below:
 
 1. Navigate to this link that takes you to an Expo Snack of this project: https://snack.expo.dev/@justicepelteir/mvpreactnativereminderapp
-2. You can either elect to interact with the app by choosing option (1) "Run on your device" or (2) "Show embeded code" option. 
+2. You can either elect to interact with the app by choosing option one "Run on your device" or two "Show embeded code" option. 
 3. Option one will require you to download Expo Go on your cellphone.
 4. Option two only requires a computer and for you to select how you would like to view/interact with it.
 5. For more detailed instructions on navigating Expo Snacks click the following link for the [official snack documentation](https://docs.expo.dev/workflow/snack/).
