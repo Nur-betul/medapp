@@ -38,6 +38,23 @@ This application was built as a code challenge, and is my first foray into React
 - To see the reminder notification that is automatically set upon reminder creation you must be outside the app itself. The notification will appear with the title 'Reminder' and the reminder text and scheduled date/time as a string.
 - Reminder notifications are not tied to the actual date/time itself currently, as the current notification function is a proof of concept.
 
+##### Example Project Screenshots
+
+1. Screen - Reminders List
+![screen-reminders list](README-IMAGES/memoryz-challenge-reminders-list-screen.png)
+2. Form - Create Reminder
+![form-create reminder](README-IMAGES/memoryz-challenge-reminder-form.png)
+3. Schedule Reminder Modal
+![schedule reminder modal](README-IMAGES/memoryz-challenge-schedule-reminder-modal.png)
+4. Created Reminder
+![created reminder example](README-IMAGES/memoryz-challenge-reminder-example.png)
+5. Multiple Reminders
+![multiple reminders example](README-IMAGES/memoryz-challenge-multiple-reminders-example.png)
+6. Completed Reminder
+![completed reminder example](README-IMAGES/memoryz-challenge-completed-reminder-example.png)
+7. Local Notification
+![local notification](README-IMAGES/memoryz-challenge-local-reminder-notification.png)
+
 ## Bugs
 
 #### Android OS
