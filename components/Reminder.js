@@ -6,18 +6,13 @@ import { CheckBox, Icon } from 'react-native-elements';
 const Reminder = (props) => {
     const [check, setCheck] = useState(false);
 
-    // Ternary Operator - Verbose Reminder Complete Visual Signal
-    // const completionState = (check ? 'Complete - ' : '')
-
+    
     return (
         <View style={styles.reminder}>
             <View style={styles.reminderLeft}>
-                {/* <View style={styles.square}></View> */}
                 <CheckBox checked={check} onPress={() => setCheck(!check)}/>
                     <Text style={styles.reminderText}>{props.text}</Text>
-                    {/* <Text style={styles.reminderText}>{completionState}{props.text}</Text> */}
             </View>
-            {/* <View style={styles.circular}></View> */}
         </View>
     )
 }
